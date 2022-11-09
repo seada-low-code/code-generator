@@ -1,0 +1,290 @@
+{
+  "version": "1.0.0",
+  "componentsMap": [
+    {
+      "componentName": "Button",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Button"
+    },
+    {
+      "componentName": "Button.Group",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Button",
+      "subName": "Group"
+    },
+    {
+      "componentName": "Input",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Input"
+    },
+    {
+      "componentName": "Form",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Form"
+    },
+    {
+      "componentName": "Form.Item",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Form",
+      "subName": "Item"
+    },
+    {
+      "componentName": "Select",
+      "package": "antd",
+      "version": "latest",
+      "destructuring": true,
+      "exportName": "Select"
+    }
+  ],
+
+  "componentsTree": [
+    {
+      "componentName": "Page",
+      "id": "node$1",
+      "meta": {
+        "title": "测试",
+        "router": "/test1"
+      },
+      "props": {
+        "ref": "outterView",
+        "autoLoading": true
+      },
+      "fileName": "test1",
+      "state": {
+        "text": "outter",
+        "colNum": 1
+      },
+      "lifeCycles": {
+        "componentDidMount": {
+          "type": "JSExpression",
+          "value": "function() { console.log('componentDidMount'); }"
+        }
+      },
+      "methods": {
+        "onClick": {
+          "type": "JSFunction",
+          "value": "function onClick() {\n  console.log(123);\n}"
+        }
+      },
+      "dataSource": {
+        "list": [
+          {
+            "id": "urlParams",
+            "type": "urlParams"
+          },
+          {
+            "id": "user",
+            "type": "fetch",
+            "options": {
+              "method": "GET",
+              "uri": "https://shs.xxx.com/mock/1458/demo/user",
+              "isSync": true
+            },
+            "dataHandler": {
+              "type": "JSExpression",
+              "value": "function (response) {\nif (!response.data.success){\n    throw new Error(response.data.message);\n  }\n  return response.data.data;\n}"
+            }
+          },
+
+          {
+            "id": "orders",
+            "type": "fetch",
+            "options": {
+              "method": "GET",
+              "uri": "https://shs.xxx.com/mock/1458/demo/orders",
+              "isSync": true
+            },
+            "dataHandler": {
+              "type": "JSExpression",
+              "value": "function (response) {\nif (!response.data.success){\n    throw new Error(response.data.message);\n  }\n  return response.data.data.result;\n}"
+            }
+          }
+        ],
+        "dataHandler": {
+          "type": "JSExpression",
+          "value": "function (dataMap) {\n  console.info(\"All datasources loaded:\", dataMap);\n}"
+        }
+      },
+      "children": [
+        {
+          "componentName": "Button",
+          "id": "node_ocl4yzdw9i2",
+          "props": {
+            "type": "primary",
+            "children": "主按钮",
+            "__component_name": "Button",
+            "htmlType": "button",
+            "size": "middle",
+            "shape": "default",
+            "icon": {
+              "type": "JSSlot",
+              "value": [
+                {
+                  "componentName": "Icon",
+                  "id": "node_ocl4yzdw9i4",
+                  "props": {
+                    "type": "SmileOutlined",
+                    "size": 20,
+                    "rotate": 0,
+                    "spin": false,
+                    "__component_name": "Icon"
+                  },
+                  "hidden": false,
+                  "title": "",
+                  "isLocked": false,
+                  "condition": true,
+                  "conditionGroup": ""
+                }
+              ]
+            },
+            "block": false,
+            "danger": false,
+            "ghost": false,
+            "disabled": false,
+            "__events": {
+              "eventDataList": [
+                {
+                  "type": "componentEvent",
+                  "name": "onClick",
+                  "relatedEventName": "onClick"
+                }
+              ],
+              "eventList": [
+                {
+                  "name": "onClick",
+                  "template": "onClick(event,${extParams}){\n// 点击按钮时的回调\nconsole.log('onClick', event);}",
+                  "disabled": true
+                }
+              ]
+            },
+            "onClick": {
+              "type": "JSFunction",
+              "value": "function(){this.onClick.apply(this,Array.prototype.slice.call(arguments).concat([{\n \t \"testKey\":123 \n}])) }"
+            }
+          },
+          "hidden": false,
+          "title": "",
+          "isLocked": false,
+          "condition": true,
+          "conditionGroup": ""
+        },
+        {
+          "componentName": "Form",
+          "id": "node$2",
+          "props": {
+            "labelCol": {
+              "type": "JSExpression",
+              "value": "this.state.colNum"
+            },
+            "style": {},
+            "ref": "testForm"
+          },
+          "children": [
+            {
+              "componentName": "Form.Item",
+              "id": "node$3",
+              "props": {
+                "label": "姓名：",
+                "name": "name",
+                "initValue": "李雷",
+                "ref": "nameFieldRef"
+              },
+              "children": [
+                {
+                  "componentName": "Input",
+                  "id": "node$4",
+                  "props": {
+                    "placeholder": "请输入",
+                    "size": "medium",
+                    "style": {
+                      "width": 320
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "componentName": "Form.Item",
+              "id": "node$7",
+              "props": {
+                "label": "职业：",
+                "name": "profession"
+              },
+              "children": [
+                {
+                  "componentName": "Select",
+                  "id": "node$8",
+                  "props": {
+                    "options": [
+                      {
+                        "label": "教师",
+                        "value": "t"
+                      },
+                      {
+                        "label": "医生",
+                        "value": "d"
+                      },
+                      {
+                        "label": "歌手",
+                        "value": "s"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "componentName": "Div",
+              "id": "node$9",
+              "props": {
+                "style": {
+                  "textAlign": "center"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": {
+    "ENV": "prod",
+    "DOMAIN": "xxx.xxx.com"
+  },
+  "css": "body {font-size: 12px;} .table { width: 100px;}",
+  "config": {
+    "sdkVersion": "1.0.3",
+    "historyMode": "hash",
+    "targetRootID": "J_Container",
+    "layout": {
+      "componentName": "BasicLayout",
+      "props": {
+        "logo": "...",
+        "name": "测试网站"
+      }
+    },
+    "theme": {
+      "package": "@alife/theme-fusion",
+      "version": "^0.1.0",
+      "primary": "#ff9966"
+    }
+  },
+  "meta": {
+    "name": "demo应用",
+    "git_group": "appGroup",
+    "project_name": "app_demo",
+    "description": "这是一个测试应用",
+    "spma": "spa23d",
+    "creator": "Test"
+  }
+}
