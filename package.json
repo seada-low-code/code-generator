@@ -48,16 +48,11 @@
     "ice:demo": "node bin/lowcode-code-generator.js -i example-schema.json -o demo -s icejs",
     "demo": "rimraf demo & ts-node src/bin/lowcode-code-generator.ts -i example-schema.json -o demo -s umi",
     "watch": "tsc --watch",
-    "ts-watch": "tsc-watch --onSuccess \"node ./scripts/yalc.js\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "ts-watch": "tsc-watch --onSuccess \"node ./scripts/yalc.js\"",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "eslint"
+    "**/*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "dependencies": {
     "@alilc/lowcode-types": "^1.0.0",
@@ -125,8 +120,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "execa": "^6.1.0",
     "gulp": "^4.0.2",
+    "husky": "^8.0.0",
     "jest": "^27.4.7",
     "jest-util": "^27.4.2",
+    "lint-staged": "^13.0.3",
     "rimraf": "^3.0.2",
     "standard-version": "^9.1.1",
     "ts-jest": "^27.1.3",
@@ -135,7 +132,9 @@
     "tsc-watch": "^5.0.3",
     "tsconfig-paths": "^3.9.0",
     "typescript": "4.x",
-    "yargs-parser": "^20.2.9"
+    "yargs-parser": "^20.2.9",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0"
   },
   "engines": {
     "node": ">=10.0.0"
